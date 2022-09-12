@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1 Javascript</title>
+</head>
+<body>
+    <script lang="javascript">
+        let nama = "Ridwan";
+        let jabatan = "Manager";
+        let status = "Menikah";
+
+        if(jabatan == "Manager"){
+            gaji_pokok = 15000000;
+        } else if(jabatan == "Asisten Manager"){
+            gaji_pokok = 10000000;
+        } else if(jabatan == "Staff"){
+            gaji_pokok = 5000000;
+        } else {
+            gaji_pokok = 0
+        }
+
+        let tunjangan_jabatan = 0.15 * gaji_pokok;
+        let bpjs = 0.1 * gaji_pokok;
+        let tunjangan_keluarga = (status == "Menikah") ? 0.2 * gaji_pokok : 0;
+        let total = gaji_pokok + tunjangan_jabatan + bpjs + tunjangan_keluarga;
+
+        document.write(
+            `<table border="1" cellpadding="10px" align="center" cellspacing="0"> 
+                <thead> 
+                    <tr bgcolor="wheat"> 
+                        <th>Nama Pegawai</th> 
+                        <th>Jabatan</th> 
+                        <th>Status</th>
+                        <th colspan="2">Pendapatan</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <tr> 
+                        <td rowspan="4">${nama}</td> 
+                        <td rowspan="4">${jabatan}</td> 
+                        <td rowspan="4">${status}</td> 
+                        <td>Gaji Pokok</td> 
+                        <td>${gaji_pokok}</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Tunjangan Jabatan</td> 
+                        <td>${tunjangan_jabatan}</td> 
+                    </tr> 
+                    <tr> 
+                        <td>BPJS</td> 
+                        <td>${bpjs}</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Tunjangan Keluarga</td> 
+                        <td>${tunjangan_keluarga}</td> 
+                    </tr> 
+                </tbody> 
+                <tfoot> 
+                    <tr bgcolor="wheat"> 
+                        <th colspan="4">Total</th> 
+                        <th>${total}</th> 
+                    </tr> 
+                </tfoot> 
+            </table>`)
+    </script>
+</body>
+</html>
