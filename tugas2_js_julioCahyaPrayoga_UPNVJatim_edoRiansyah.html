@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tugas2</title>
+  </head>
+  <body>
+    <table border="1" cellspacing="0" cellpadding="13px" align="center">
+      <thead>
+        <th>NO</th>
+        <th>NAMA</th>
+        <th>JABATAN</th>
+        <th>AGAMA</th>
+        <th>GAJI POKOK</th>
+        <th>TUNJANGAN JABATAN</th>
+        <th>TUNJANGAN KESEHATAN</th>
+        <th>GAJI KOTOR</th>
+        <th>ZAKAT PROFESI</th>
+        <th>TAKE HOME PAY</th>
+      </thead>
+      <tbody>
+        <script lang="javascript">
+            // inisialisasi variabel
+            let pegawai = 100;
+            let agama;
+            let jabatan;
+            let warna;
+            let gapok;
+            
+            // looping untuk memunculkan data
+            for(x = 1; x <= pegawai; x++){
+                // cek kondisi x untuk menentukan jabatan
+                if(x <= 25){
+                    jabatan = "Manager";
+                } else if(x <= 50){
+                    jabatan = "Asisten Manager";
+                } else if(x <= 75){
+                    jabatan = "Supervisor";
+                } else if (x <= 100){
+                    jabatan = "Staff";
+                }
+
+                // cek kondisi jabatan untuk menentukan gaji pokok
+                switch(jabatan){
+                    case "Manager":
+                        gapok = 15000000;
+                        break;
+                    case "Asisten Manager":
+                        gapok = 10000000;
+                        break;
+                    case "Supervisor":
+                        gapok = 7000000;
+                        break;
+                    case "Staff":
+                        gapok = 4000000;
+                        break;
+                }
+
+                // inisialisasi variabel 
+                let tunjanganJabatan = 0.2 * gapok;
+                let tunjanganKesehatan = 0.1 * gapok;
+                let gajiKotor = gapok + tunjanganJabatan + tunjanganKesehatan;
+                let zakatProfesi;
+
+                // pengecekan kondisi untuk mengetahui agama pegawai
+                agama = (x % 2 == 1) ? "Muslim" : "Non-Muslim";
+
+                // pengecekan kondisi untuk menentukan warna baris
+                warna = (x % 2 == 1) ? "#FBDF07" : "#AAC4FF";
+
+                // pengecekan kondisi untuk menentukan zakat profesi
+                agama == "Muslim" && gajiKotor >= 7000000 ? (zakatProfesi = 0.025 * gajiKotor) : (zakatProfesi = 0);
+
+                // inisialisasi variabel
+                let takeHomePay = gajiKotor - zakatProfesi;
+                document.write(
+                    `<tr bgcolor="${warna}">
+                        <td>${x}</td>
+                        <td>Pegawai${x}</td>
+                        <td>${jabatan}</td>
+                        <td>${agama}</td>
+                        <td>${gapok}</td>
+                        <td>${tunjanganJabatan}</td>
+                        <td>${tunjanganKesehatan}</td>
+                        <td>${gajiKotor}</td>
+                        <td>${zakatProfesi}</td>
+                        <td>${takeHomePay}</td>
+                    </tr>`)}
+        </script>
+      </tbody>
+    </table>
+  </body>
+</html>
