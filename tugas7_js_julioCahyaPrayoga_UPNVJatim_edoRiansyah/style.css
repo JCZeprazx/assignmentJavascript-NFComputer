@@ -1,0 +1,11 @@
+.wave1 {
+    position: absolute;
+    top: 14rem;
+    z-index: -1;
+}
+
+.wave2 {
+    position: absolute;
+    top: 32rem;
+    z-index: -2;
+}
